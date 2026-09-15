@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Queue Management System | Register Smart At TUT</title>
+  
+  <!-- Custom Typography Framework: Plus Jakarta Sans + Public Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-navy: #002855;
+      --primary-dark: #001938;
+      --surface-bg: #F8F9FA;
+      --accent-red: #D32F2F;
+      --accent-red-hover: #B71C1C;
+      --card-bg: #FFFFFF;
+      --text-main: #0A192F;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      
+      --font-heading: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body: 'Public Sans', -apple-system, sans-serif;
+      
+      --shadow-sm: 0 2px 4px rgba(0, 40, 85, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(0, 40, 85, 0.08);
+      --shadow-lg: 0 20px 30px -10px rgba(0, 40, 85, 0.12);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .challenge-icon img, .metric-icon img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--surface-bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-heading);
+      letter-spacing: -0.02em;
+    }
+
+    /* Header & Sticky Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      background: var(--primary-navy);
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+
+    .system-badge {
+      background: rgba(211, 47, 47, 0.08);
+      color: var(--accent-red);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(211, 47, 47, 0.2);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-red);
+    }
+
+    .btn-nav-staff {
+      background-color: var(--primary-navy);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav-staff:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Container Standards */
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary-navy);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Asymmetric Hero Section */
+    .hero {
+      background: var(--primary-navy);
+      color: white;
+      padding: 6rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 968px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-text h1 span {
+      color: var(--accent-red);
+      background: linear-gradient(180deg, rgba(211,47,47,0) 65%, rgba(211,47,47,0.3) 65%);
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #CBD5E1;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 968px) {
+      .cta-group {
+        justify-content: center;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-red);
+      color: white;
+      box-shadow: 0 4px 14px rgba(211, 47, 47, 0.4);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-red-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Asymmetric Visual Hero Card */
+    .hero-preview-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10B981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-green 1.8s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* Challenges Section */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .challenge-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2.2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(0, 40, 85, 0.2);
+    }
+
+    .challenge-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(211, 47, 47, 0.08);
+      color: var(--accent-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .challenge-card h3 {
+      font-size: 1.3rem;
+      color: var(--primary-navy);
+      margin-bottom: 0.8rem;
+    }
+
+    .challenge-card p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Interactive Ticket Generator Layout */
+    .app-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .app-split-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-card, .ticket-result-card {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+      background: #FAFAFA;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-navy);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(0, 40, 85, 0.1);
+    }
+
+    /* Digital Ticket Render Card */
+    .ticket-display {
+      background: var(--primary-navy);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      border-top: 6px solid var(--accent-red);
+    }
+
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ticket-id {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 2px;
+    }
+
+    .ticket-badge {
+      background: rgba(211, 47, 47, 0.2);
+      color: #FF8A8A;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .ticket-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ticket-field label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #94A3B8;
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .ticket-field span {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .ticket-footer {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 1.2rem;
+      border-radius: var(--radius-sm);
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .ticket-stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .ticket-stat-lbl {
+      font-size: 0.75rem;
+      color: #CBD5E1;
+    }
+
+    /* Live Queue Monitor */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      padding: 1.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .metric-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(0, 40, 85, 0.08);
+      color: var(--primary-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .metric-data h4 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      line-height: 1;
+    }
+
+    .metric-data p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .counters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .counter-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .counter-card.active {
+      border-color: var(--accent-red);
+      box-shadow: 0 0 18px rgba(211, 47, 47, 0.15);
+    }
+
+    .counter-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .now-serving-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .now-serving-number.pulsing {
+      animation: pulse-red 1.5s infinite;
+      color: var(--accent-red);
+    }
+
+    @keyframes pulse-red {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+
+    .counter-service {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--surface-bg);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    /* Next in Line Feed */
+    .next-feed-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .feed-list {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .feed-item {
+      min-width: 150px;
+      background: var(--surface-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .feed-item .ticket-code {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+    }
+
+    .feed-item .ticket-dept {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Staff Operations Panel */
+    .admin-wrapper {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: 2.5rem;
+    }
+
+    .admin-controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 850px) {
+      .admin-controls-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .admin-action-box {
+      background: var(--surface-bg);
+      padding: 1.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-group-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .btn-action {
+      padding: 13px;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      color: white;
+      transition: all 0.2s ease;
+      font-family: var(--font-body);
+    }
+
+    .btn-action:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-call { background: var(--primary-navy); }
+    .btn-complete { background: #10B981; }
+    .btn-hold { background: #E65100; }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background: var(--surface-bg);
+      padding: 14px;
+      color: var(--text-muted);
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-waiting { background: #FEF3C7; color: #92400E; }
+    .status-progress { background: #DBEAFE; color: #1E40AF; }
+    .status-completed { background: #D1FAE5; color: #065F46; }
+    .status-held { background: #FFEDD5; color: #9A3412; }
+
+    footer {
+      background: var(--primary-navy);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin-top: 5rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      color: #94A3B8;
+    }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary-navy);
+      color: white;
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      border-left: 5px solid var(--accent-red);
+      box-shadow: var(--shadow-lg);
+      display: none;
+      z-index: 2000;
+      animation: slideIn 0.3s ease;
+      font-weight: 600;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navigation Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqmHKmWj_yL-eFC_qqWAP8RQNyu1r2RxVqtN2a6nfHUQ&s=10" alt="TUT Logo" class="logo-img">
+        <span class="system-badge">Register Smart At TUT</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#challenges">Challenges</a></li>
+          <li><a href="#ticket">Get Ticket</a></li>
+          <li><a href="#live-board">Live Queue Board</a></li>
+          <li><a href="#staff-view" class="btn-nav-staff">Staff View</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Asymmetric Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Smart Queue <span>Management System</span></h1>
+        <p>Streamlining campus registration, eliminating long lines, and providing real-time queue updates for TUT students.</p>
+        <div class="cta-group">
+          <a href="#ticket" class="btn btn-primary">Join Queue Now</a>
+          <a href="#live-board" class="btn btn-secondary">View Live Status</a>
+        </div>
+      </div>
+      <div class="hero-preview-card">
+        <div class="live-status-pill">
+          <div class="pulse-dot"></div>
+          System Live & Operational
+        </div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; font-family: var(--font-heading);">Campus Queue Telemetry</h3>
+        <p style="color: #CBD5E1; font-size: 0.95rem; margin-bottom: 1.5rem;">Automated counter synchronization active across all faculties.</p>
+        <div style="background: rgba(255,255,255,0.08); padding: 1rem; border-radius: 8px;">
+          <div style="font-size: 0.8rem; color: #94A3B8; text-transform: uppercase; font-weight:700;">Current Avg Processing</div>
+          <div style="font-size: 1.8rem; font-weight:800; color: #FFF; font-family: var(--font-heading);">3.2 mins / student</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges Section -->
+  <section id="challenges" class="section-container">
+    <div class="section-header">
+      <h2>Campus Registration Challenges Solved</h2>
+      <p>Modernizing student service delivery across TUT registration venues.</p>
+    </div>
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="challenge-icon"><img src="https://img.icons8.com/fluency/48/hourglass.png" alt="Wait Icon"></div>
+        <h3>Long Physical Lines</h3>
+        <p>Eliminates campus registration congestion and long physical queues with virtual ticket allocation.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon"><img src="https://img.icons8.com/fluency/48/bar-chart.png" alt="Analytics Icon"></div>
+        <h3>Uncertain Wait Times</h3>
+        <p>Provides complete visibility into queue progression with dynamic wait estimation metrics.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon"><img src="https://img.icons8.com/fluency/48/flash.png" alt="Efficiency Icon"></div>
+        <h3>Administrative Overload</h3>
+        <p>Replaces manual token handling with automated counter routing and real-time staff controls.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Ticket Generator Section -->
+  <section id="ticket" class="section-container">
+    <div class="section-header">
+      <h2>Student Queue Registration</h2>
+      <p>Generate your official virtual queue ticket in seconds.</p>
+    </div>
+    <div class="app-split-layout">
+      <!-- Input Form -->
+      <div class="form-card">
+        <form id="ticket-form" onsubmit="handleGenerateTicket(event)">
+          <div class="form-group">
+            <label for="student-number">Student Number</label>
+            <input type="text" id="student-number" class="form-control" placeholder="e.g., 219012345" required pattern="[0-9]{8,10}" title="Enter valid student number">
+          </div>
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" class="form-control" placeholder="e.g., Sipho Ndlovu" required>
+          </div>
+          <div class="form-group">
+            <label for="faculty">Faculty / Department</label>
+            <select id="faculty" class="form-control" required>
+              <option value="">Select Faculty</option>
+              <option value="Information & Communication Tech">ICT</option>
+              <option value="Engineering & Built Environment">Engineering</option>
+              <option value="Management Sciences">Management Sciences</option>
+              <option value="Humanities">Humanities</option>
+              <option value="Science">Science</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="service-type">Service Required</label>
+            <select id="service-type" class="form-control" required>
+              <option value="">Select Service</option>
+              <option value="Course Registration">Course Registration</option>
+              <option value="Financial Clearance">Financial Clearance</option>
+              <option value="ID Collection">ID Card Collection</option>
+              <option value="General Enquiry">General Enquiry</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Generate Ticket</button>
+        </form>
+      </div>
+
+      <!-- Ticket Output Preview -->
+      <div class="ticket-result-card" id="ticket-preview-container">
+        <div id="no-ticket-msg" style="text-align: center; padding: 3.5rem 1rem; color: var(--text-muted);">
+          <p style="font-size: 3rem; margin-bottom: 1rem;"><img src="https://img.icons8.com/fluency/48/ticket.png" alt="Ticket Icon" style="width: 64px; height: 64px;"></p>
+          <p style="font-weight: 600;">Complete registration to receive your dynamic electronic ticket.</p>
+        </div>
+
+        <div id="active-ticket-card" class="ticket-display" style="display: none;">
+          <div class="ticket-header">
+            <div>
+              <span class="ticket-badge">Register Smart At TUT</span>
+              <p style="font-size: 0.85rem; color: #CBD5E1; margin-top: 4px;" id="disp-faculty">ICT</p>
+            </div>
+            <div class="ticket-id" id="disp-ticket-id">TUT-A101</div>
+          </div>
+          <div class="ticket-body-grid">
+            <div class="ticket-field">
+              <label>Student Name</label>
+              <span id="disp-student-name">Sipho Ndlovu</span>
+            </div>
+            <div class="ticket-field">
+              <label>Service</label>
+              <span id="disp-service">Course Registration</span>
+            </div>
+            <div class="ticket-field">
+              <label>Assigned Counter</label>
+              <span id="disp-counter">Counter 2</span>
+            </div>
+            <div class="ticket-field">
+              <label>Status</label>
+              <span id="disp-status" style="color: #FF8A8A;">Waiting</span>
+            </div>
+          </div>
+          <div class="ticket-footer">
+            <div>
+              <div class="ticket-stat-val" id="disp-wait-time">~12 mins</div>
+              <div class="ticket-stat-lbl">Est. Wait Time</div>
+            </div>
+            <div>
+              <div class="ticket-stat-val" id="disp-ahead-count">3</div>
+              <div class="ticket-stat-lbl">People Ahead</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Queue Monitor Section -->
+  <section id="live-board" class="section-container" style="background: rgba(255,255,255,0.6);">
+    <div class="section-header">
+      <h2>Live Queue Monitor</h2>
+      <p>Real-time telemetry across campus registration counters.</p>
+    </div>
+
+    <!-- Metrics Row -->
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-icon"><img src="https://img.icons8.com/fluency/48/group.png" alt="Users Icon"></div>
+        <div class="metric-data">
+          <h4 id="metric-waiting">0</h4>
+          <p>Total Waiting</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><img src="https://img.icons8.com/fluency/48/stopwatch.png" alt="Time Icon"></div>
+        <div class="metric-data">
+          <h4 id="metric-avg-time">~8 min</h4>
+          <p>Avg Wait Time</p>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><img src="https://img.icons8.com/fluency/48/checked-checkbox.png" alt="Completed Icon"></div>
+        <div class="metric-data">
+          <h4 id="metric-completed">142</h4>
+          <p>Completed Today</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Counters (1-5) -->
+    <h3 style="margin-bottom: 1.2rem; color: var(--primary-navy); font-size: 1.4rem;">Active Counters</h3>
+    <div class="counters-grid" id="counters-grid-container">
+      <!-- Generated via JavaScript -->
+    </div>
+
+    <!-- Next in Line Feed -->
+    <div class="next-feed-card">
+      <h4 style="margin-bottom: 1rem; color: var(--primary-navy); font-size: 1.1rem;">Next In Line</h4>
+      <div class="feed-list" id="next-in-line-feed">
+        <!-- Generated via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff Operations Panel -->
+  <section id="staff-view" class="section-container">
+    <div class="section-header">
+      <h2>Counter Staff Operations Panel</h2>
+      <p>Interactive administrative view to manage ticket sequence.</p>
+    </div>
+
+    <div class="admin-wrapper">
+      <div class="admin-controls-grid">
+        <div class="admin-action-box">
+          <label style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Select Staff Counter</label>
+          <select id="staff-counter-select" class="form-control" onchange="updateStaffView()">
+            <option value="1">Counter 1 - Course Registration</option>
+            <option value="2">Counter 2 - Course Registration</option>
+            <option value="3">Counter 3 - Financial Clearance</option>
+            <option value="4">Counter 4 - ID Card Collection</option>
+            <option value="5">Counter 5 - General Enquiry</option>
+          </select>
+
+          <div style="margin-top: 1.5rem; background: #FFF; padding: 1.2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <p style="font-size: 0.8rem; color: var(--text-muted); font-weight:700;">Serving at Counter <span id="staff-counter-num">1</span>:</p>
+            <h3 style="font-size: 2rem; color: var(--primary-navy); font-family: var(--font-heading);" id="staff-serving-ticket">None</h3>
+          </div>
+
+          <div class="btn-group-vertical">
+            <button class="btn-action btn-call" onclick="staffAction('call')">Call Next Ticket</button>
+            <button class="btn-action btn-complete" onclick="staffAction('complete')">Mark Complete</button>
+            <button class="btn-action btn-hold" onclick="staffAction('hold')">Hold Ticket</button>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom: 1rem; color: var(--primary-navy); font-size: 1.2rem;">Master Queue Registry</h4>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Student</th>
+                  <th>Service</th>
+                  <th>Counter</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-table-body">
+                <!-- Populated by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Tshwane University of Technology. Smart Queue Management System.</p>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast-notification" class="toast">
+    <span id="toast-message">Ticket called!</span>
+  </div>
+
+  <script>
+    // Initial Master State
+    const initialTickets = [
+      { id: 'TUT-A101', name: 'Sipho Ndlovu', studentId: '219012345', faculty: 'ICT', service: 'Course Registration', status: 'Completed', counter: 1, time: Date.now() - 2000000 },
+      { id: 'TUT-A102', name: 'Thabo Mokoena', studentId: '220198765', faculty: 'Engineering', service: 'Financial Clearance', status: 'In Progress', counter: 3, time: Date.now() - 1200000 },
+      { id: 'TUT-A103', name: 'Lerato Khumalo', studentId: '221543210', faculty: 'Management Sciences', service: 'Course Registration', status: 'In Progress', counter: 2, time: Date.now() - 800000 },
+      { id: 'TUT-A104', name: 'Zanele Dlamini', studentId: '222876543', faculty: 'ICT', service: 'ID Collection', status: 'In Progress', counter: 4, time: Date.now() - 400000 },
+      { id: 'TUT-A105', name: 'Kagiso Molefe', studentId: '223456789', faculty: 'Science', service: 'Course Registration', status: 'Waiting', counter: null, time: Date.now() - 200000 },
+      { id: 'TUT-A106', name: 'Bontle Mabena', studentId: '224112233', faculty: 'Humanities', service: 'General Enquiry', status: 'Waiting', counter: null, time: Date.now() - 100000 }
+    ];
+
+    let state = JSON.parse(localStorage.getItem('tut_queue_state_v2')) || {
+      tickets: initialTickets,
+      ticketCounter: 107,
+      completedCount: 142,
+      userCurrentTicketId: null
+    };
+
+    function saveState() {
+      localStorage.setItem('tut_queue_state_v2', JSON.stringify(state));
+      render();
+    }
+
+    // Web Audio Chime Sound
+    function playChime() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); 
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15); 
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } catch (e) {
+        console.log('Audio disabled by browser context.');
+      }
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').innerText = message;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3500);
+    }
+
+    // Ticket Generation Handler
+    function handleGenerateTicket(e) {
+      e.preventDefault();
+      const num = document.getElementById('student-number').value;
+      const name = document.getElementById('full-name').value;
+      const faculty = document.getElementById('faculty').value;
+      const service = document.getElementById('service-type').value;
+
+      const newId = `TUT-A${state.ticketCounter++}`;
+      const newTicket = {
+        id: newId,
+        name: name,
+        studentId: num,
+        faculty: faculty,
+        service: service,
+        status: 'Waiting',
+        counter: null,
+        time: Date.now()
+      };
+
+      state.tickets.push(newTicket);
+      state.userCurrentTicketId = newId;
+      saveState();
+
+      document.getElementById('ticket-form').reset();
+      showToast(`Ticket ${newId} generated successfully!`);
+    }
+
+    // Staff Panel Actions
+    function staffAction(action) {
+      const counterNum = parseInt(document.getElementById('staff-counter-select').value);
+      const activeTicket = state.tickets.find(t => t.counter === counterNum && t.status === 'In Progress');
+
+      if (action === 'call') {
+        if (activeTicket) {
+          showToast(`Counter ${counterNum} must complete ticket ${activeTicket.id} first.`);
+          return;
+        }
+        const nextTicket = state.tickets.find(t => t.status === 'Waiting');
+        if (nextTicket) {
+          nextTicket.status = 'In Progress';
+          nextTicket.counter = counterNum;
+          playChime();
+          showToast(`Counter ${counterNum} is now serving ${nextTicket.id}`);
+        } else {
+          showToast('No waiting tickets in queue.');
+        }
+      } else if (action === 'complete') {
+        if (activeTicket) {
+          activeTicket.status = 'Completed';
+          state.completedCount++;
+          showToast(`Ticket ${activeTicket.id} marked as Completed.`);
+        } else {
+          showToast('No active ticket to complete at this counter.');
+        }
+      } else if (action === 'hold') {
+        if (activeTicket) {
+          activeTicket.status = 'Held';
+          showToast(`Ticket ${activeTicket.id} placed on Hold.`);
+        } else {
+          showToast('No active ticket to hold at this counter.');
+        }
+      }
+
+      saveState();
+    }
+
+    function updateStaffView() {
+      const counterNum = parseInt(document.getElementById('staff-counter-select').value);
+      document.getElementById('staff-counter-num').innerText = counterNum;
+      const serving = state.tickets.find(t => t.counter === counterNum && t.status === 'In Progress');
+      document.getElementById('staff-serving-ticket').innerText = serving ? serving.id : 'None';
+    }
+
+    // UI Render Engine
+    function render() {
+      const waitingTickets = state.tickets.filter(t => t.status === 'Waiting');
+      document.getElementById('metric-waiting').innerText = waitingTickets.length;
+      document.getElementById('metric-avg-time').innerText = `~${Math.max(3, waitingTickets.length * 3)} min`;
+      document.getElementById('metric-completed').innerText = state.completedCount;
+
+      const userTicket = state.tickets.find(t => t.id === state.userCurrentTicketId);
+      const noTicketMsg = document.getElementById('no-ticket-msg');
+      const ticketCard = document.getElementById('active-ticket-card');
+
+      if (userTicket) {
+        noTicketMsg.style.display = 'none';
+        ticketCard.style.display = 'block';
+
+        document.getElementById('disp-ticket-id').innerText = userTicket.id;
+        document.getElementById('disp-student-name').innerText = userTicket.name;
+        document.getElementById('disp-faculty').innerText = userTicket.faculty;
+        document.getElementById('disp-service').innerText = userTicket.service;
+        document.getElementById('disp-counter').innerText = userTicket.counter ? `Counter ${userTicket.counter}` : 'Unassigned';
+        document.getElementById('disp-status').innerText = userTicket.status;
+
+        const aheadCount = state.tickets.filter(t => t.status === 'Waiting' && t.time < userTicket.time).length;
+        document.getElementById('disp-ahead-count').innerText = userTicket.status === 'Waiting' ? aheadCount : 0;
+        document.getElementById('disp-wait-time').innerText = userTicket.status === 'Waiting' ? `~${(aheadCount + 1) * 3} mins` : 'Ready';
+      } else {
+        noTicketMsg.style.display = 'block';
+        ticketCard.style.display = 'none';
+      }
+
+      const countersContainer = document.getElementById('counters-grid-container');
+      countersContainer.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const serving = state.tickets.find(t => t.counter === i && t.status === 'In Progress');
+        const card = document.createElement('div');
+        card.className = `counter-card ${serving ? 'active' : ''}`;
+        card.innerHTML = `
+          <div class="counter-title">Counter 0${i}</div>
+          <div class="now-serving-number ${serving ? 'pulsing' : ''}">${serving ? serving.id : '---'}</div>
+          <div class="counter-service">${serving ? serving.service : 'Available'}</div>
+        `;
+        countersContainer.appendChild(card);
+      }
+
+      const nextFeed = document.getElementById('next-in-line-feed');
+      nextFeed.innerHTML = '';
+      if (waitingTickets.length === 0) {
+        nextFeed.innerHTML = '<p style="color: var(--text-muted); font-size: 0.88rem;">No tickets currently waiting.</p>';
+      } else {
+        waitingTickets.slice(0, 6).forEach(t => {
+          const item = document.createElement('div');
+          item.className = 'feed-item';
+          item.innerHTML = `
+            <div class="ticket-code">${t.id}</div>
+            <div class="ticket-dept">${t.faculty}</div>
+          `;
+          nextFeed.appendChild(item);
+        });
+      }
+
+      const adminTbody = document.getElementById('admin-table-body');
+      adminTbody.innerHTML = '';
+      [...state.tickets].reverse().forEach(t => {
+        const tr = document.createElement('tr');
+        let statusClass = 'status-waiting';
+        if (t.status === 'In Progress') statusClass = 'status-progress';
+        if (t.status === 'Completed') statusClass = 'status-completed';
+        if (t.status === 'Held') statusClass = 'status-held';
+
+        tr.innerHTML = `
+          <td style="font-weight:700;">${t.id}</td>
+          <td>${t.name}</td>
+          <td>${t.service}</td>
+          <td>${t.counter ? 'Counter ' + t.counter : '-'}</td>
+          <td><span class="status-badge ${statusClass}">${t.status}</span></td>
+        `;
+        adminTbody.appendChild(tr);
+      });
+
+      updateStaffView();
+    }
+
+    // Auto Simulation Loop
+    setInterval(() => {
+      const waiting = state.tickets.filter(t => t.status === 'Waiting');
+      if (waiting.length > 0 && Math.random() > 0.65) {
+        for (let c = 1; c <= 5; c++) {
+          if (!state.tickets.some(t => t.counter === c && t.status === 'In Progress')) {
+            const next = waiting[0];
+            next.status = 'In Progress';
+            next.counter = c;
+            if (next.id === state.userCurrentTicketId) {
+              playChime();
+              showToast(`Your ticket ${next.id} is now being served at Counter ${c}!`);
+            }
+            saveState();
+            break;
+          }
+        }
+      }
+    }, 9000);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+    });
+  </script>
+</body>
+</html>
